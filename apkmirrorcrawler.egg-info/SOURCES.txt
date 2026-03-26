@@ -1,0 +1,10 @@
+setup.py
+apkmirrorcrawler/__init__.py
+apkmirrorcrawler/cli.py
+apkmirrorcrawler/core.py
+apkmirrorcrawler.egg-info/PKG-INFO
+apkmirrorcrawler.egg-info/SOURCES.txt
+apkmirrorcrawler.egg-info/dependency_links.txt
+apkmirrorcrawler.egg-info/entry_points.txt
+apkmirrorcrawler.egg-info/requires.txt
+apkmirrorcrawler.egg-info/top_level.txt
