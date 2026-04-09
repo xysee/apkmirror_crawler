@@ -6,3 +6,5 @@
 
 - Setup the project structure, parsed local html (Gemini)
 - Running into 403 client errors
+
+- 4/9/26: Completed local variant page extraction
