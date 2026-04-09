@@ -1,6 +1,22 @@
 from bs4 import BeautifulSoup
 
+BASE_URL = "https://www.apkmirror.com"
 HTML_FILE = "gemini_variant.html"
+
+
+def find_intermediate_download_link(soup):
+    links = soup.find_all("a", href=True)
+
+    for link in links:
+        href = link["href"]
+
+        if "/download/" in href:
+            if href.startswith("/"):
+                return BASE_URL + href
+            return href
+
+    return None
+
 
 def run_crawler():
     print("[*] Reading local HTML file...")
@@ -10,15 +26,17 @@ def run_crawler():
 
     soup = BeautifulSoup(html, "html.parser")
 
-    title_tag = soup.find("h1")
+    title_tag = soup.find("title")
     if title_tag:
-        print("[+] Title:")
+        print("\n[+] Title:")
         print(title_tag.get_text(strip=True))
     else:
-        print("[-] Could not find h1 title")
+        print("\n[-] Could not find h1 title")
 
-    print("\n[+] First 10 links on page:")
-    links = soup.find_all("a", href=True)
+    download_link = find_intermediate_download_link(soup)
 
-    for i, link in enumerate(links[:10], start=1):
-        print("{}: {}".format(i, link["href"]))
+    if download_link:
+        print("\n[+] Intermediate download link found:")
+        print(download_link)
+    else:
+        print("\n[-] No intermediate download link found")
